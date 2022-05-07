@@ -1,0 +1,100 @@
+$primary-color:#00000e;
+$secondary-color:yellow;
+$light:#f9f9f9;
+
+* , *::before , *::after {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+html {
+    font-size:13px;
+    font-family: 'Poppins' , sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+input , button , select {
+    font-family: 'Poppins' , sans-serif;
+}
+input[type=text] , input[type=password] , input[type=search] , input[type=email] {
+    border:none;
+    outline:none;
+}
+button {
+    border:none;
+    outline:none;
+    cursor: pointer;
+}
+.btn_primary {
+    padding:.8rem .9rem;
+    border-radius:.1rem;
+}
+input {
+    outline:none;
+    border:none;
+    background:$light;
+}
+
+
+@mixin setPosition($position , $x , $y){
+    position:$position;
+    left:$x;
+    top:$y;
+    transform:translate(-$x , -$y);
+}
+@mixin flexbox($justify-content , $align-items){
+    display: flex;
+    justify-content:$justify-content;
+    align-items:$align-items;
+}
+
+@mixin grid($tpc){
+    display:grid;
+    grid-template-columns:$tpc;
+}
+
+.modal {
+    width:50%;
+    min-width:350px;
+    padding:1rem;
+    background:white;
+    @include setPosition(absolute , 50%, 5%);
+    border-radius:.1rem;
+    animation: slideup 1s ease-in-out ;
+    font-size:.9rem;
+    @include flexbox(space-between , center);
+}
+
+@keyframes slideup {
+    0% {
+        @include setPosition(absolute , 50%, 40%);
+    }50%{
+        @include setPosition(absolute , 50%, 5%);
+    }70%{
+        @include setPosition(absolute , 50%, 10%);
+    }80%{
+        @include setPosition(absolute , 50%, 5%);
+    }90%{
+        @include setPosition(absolute , 50%, 7%);
+    }100%{
+        @include setPosition(absolute , 50%, 5%);
+    }
+}
+.success_false {
+    background:#ff5757;
+}
+.success_true {
+    background:#71ff71;
+}
+
+@import 'header';
+@import 'footer';
+@import 'index';
+@import 'blank';
+@import 'productDisplay';
+@import 'productdetail';
+@import 'auth';
+@import 'nav';
+@import 'cart';

@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+Hi {{user.username}}
+
+Please use the link below to verify your account
+
+http://{{domain}}/verify_mail/{{uidb64}}/{{token}}/
+
+
+{% endautoescape %}

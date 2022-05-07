@@ -1,0 +1,30 @@
+.product_display {
+    margin :1rem auto;
+    border:1px solid $light;
+    border-radius:.1rem;
+}
+
+.product_display_link_wrapper{
+    color:black;
+    text-decoration: none;
+}
+.product_display_imgwrapper{
+    height:7rem;
+    flex:.5;
+    position: relative;
+    img {
+        object-fit:cover;
+    }
+}
+.product_display_info {
+    flex:.4;
+    p {
+        margin:.3rem auto;
+    }
+}
+
+.product_flex {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}

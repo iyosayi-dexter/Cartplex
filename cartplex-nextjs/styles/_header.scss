@@ -1,0 +1,84 @@
+.header_main {
+    padding:2rem 1rem;
+    border-bottom:1px solid rgba($light ,.4);
+    background:$primary-color;
+    color:white;
+}
+.header_main_flex {
+    @include flexbox(space-around , center);
+    padding:0 2rem;
+}
+.header_main_logo_wrapper{
+    flex:.15;
+    min-width:9rem;
+    a {
+        @include flexbox(flex-start , center);
+    }
+}
+.header_main form {
+    @include flexbox(center , center);
+    flex:.6;
+}
+.header_main form .btn_primary {
+    background:yellow;
+    height:3rem;
+    font-size:.9rem;
+    flex:.08;
+}
+.header_main form input {
+    height:3rem;
+    background:white;
+    padding:0 .9rem;
+    font-size:.9rem;
+    flex:.6;
+}
+.header_main form select {
+    height:3rem;
+    background:$light;
+    padding:0 .9rem;
+    font-size:.9rem;
+    max-width: 300px;
+    outline:none;
+    border:none;
+    flex:.3;
+}
+.header_main_user_section {
+    flex:.1;
+    @include flexbox(flex-end , center);
+    // border:1px solid white;
+}
+.header_main_form_selection{
+    @include flexbox(center , center);
+    flex:.8;
+}
+.header_main_user_cart a {
+    color:white;
+    @include flexbox(center , center);
+    gap:.5rem;
+}
+.header_main_user_cart .header_main_cart_icon_wrapper {
+    position: relative;
+    .header_main_cart_items_total{
+        position:absolute;
+        top:-.5rem;
+        right:-1rem;
+        background:yellow;
+        color:black;
+        width:1.5rem;
+        height:1.5rem;
+        text-align:center;
+        border-radius:50%;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .header_main form {
+        display: none;
+    }
+    .header_main_user_section {
+        flex:.5;
+    }
+    .header_main_logo_wrapper{
+        flex:.35;
+    }
+}
