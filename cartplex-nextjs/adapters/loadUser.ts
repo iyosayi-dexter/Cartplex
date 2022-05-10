@@ -1,18 +1,12 @@
 import  REST_API_URL from '../utils/global'
 import {decodeJWT} from '../utils/auth'
-import {useProfileContext} from '../contexts/profileContext'
 import {userInterface} from '../utils/interfaces'
 import {retrieveRefreshToken , storeRefershToken} from '../utils/auth'
-import {useCallback , useState} from 'react'
+import {useCallback , Dispatch , SetStateAction} from 'react'
 
 const useLoadUser=()=>{
-    const {setUserData} = useProfileContext()
 
-    /*
-        @desc loads the user with refresh key stored in session storage
-    */
-
-    const loadUser=useCallback(async()=>{
+    const loadUser=useCallback(async(setUserData:Dispatch<SetStateAction<userInterface>>)=>{
         const refresh = retrieveRefreshToken()
         if(refresh===null){
             return
@@ -29,9 +23,7 @@ const useLoadUser=()=>{
         }
         try{
             const res = await fetch(`${REST_API_URL}/auth/token/refresh/` , config)
-            if(res.status === 400){
-                console.log('failed')
-                console.log(res)
+            if(res.status >= 400 && res.status <= 499){
                 return
             }
             const {access , refresh} = await res.json()
@@ -46,10 +38,10 @@ const useLoadUser=()=>{
                 isAutheticated:true
             }
             setUserData!(user)
-        }finally{
-            console.log('done')
+        }catch(err){
+            console.log(err)
         }
-    },[setUserData])
+    },[])
 
     return loadUser
 }
