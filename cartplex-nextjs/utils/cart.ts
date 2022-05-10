@@ -1,6 +1,6 @@
 import {useCartContext} from '../contexts/cartContext'
 import { cartItemInterface } from './interfaces'
-import {useCallback} from 'react'
+import {useCallback , Dispatch , SetStateAction} from 'react'
 
 
 
@@ -74,9 +74,7 @@ export const useChangeCartItemQuantity=()=>{
 
 // Retrieving an item from localStorage on intitial render or page reload
 export const useRetrieveCartitems=()=>{
-    const {setCartItems , cartItems} = useCartContext()
-
-    const retrieveCartItems=useCallback(()=>{
+    const retrieveCartItems=useCallback((setCartItems: Dispatch<SetStateAction<cartItemInterface[]>>)=>{
         const cart_item_json = localStorage.getItem('cartItems')
         if(cart_item_json !== undefined){
             const parsed_cart_items: cartItemInterface[] = JSON.parse(cart_item_json!)
@@ -84,7 +82,7 @@ export const useRetrieveCartitems=()=>{
                 setCartItems!(parsed_cart_items)
             }
         }
-    },[setCartItems])
+    },[])
     return retrieveCartItems
 }
 
