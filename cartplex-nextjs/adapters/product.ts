@@ -19,3 +19,19 @@ export const useGetProduct=()=>{
     },[])
     return getProduct
 }
+
+export const useGetCategories=()=>{
+    const getCategories=useCallback(async (url:string , setDataCallback:Dispatch<SetStateAction<{id:number , name:string}[]>> , setLoadingCallBack:Dispatch<SetStateAction<boolean>>)=>{
+        try{
+            setLoadingCallBack(true)
+            const res = await fetch(`${REST_API_URL}/${url}`)
+            const data = await res.json()
+            setDataCallback(data)
+        }catch(err){
+
+        }finally{
+            setLoadingCallBack(false)
+        }
+    },[])
+    return getCategories
+}

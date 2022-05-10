@@ -8,7 +8,6 @@ import { userInterface } from '../utils/interfaces'
 import { cartItemInterface} from '../utils/interfaces'
 import {useState , useEffect} from 'react'
 import Header from '../components/Header'
-import NavBar from '../components/NavBar'
 import useLoadUser from '../adapters/loadUser'
 import {useRetrieveCartitems} from '../utils/cart'
 
@@ -30,7 +29,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <CartContext.Provider value={{cartItems , setCartItems}}>
         <Fragment>
             <Header/>
-            <NavBar/>
             <Component {...pageProps} />
             <Footer/>
         </Fragment>

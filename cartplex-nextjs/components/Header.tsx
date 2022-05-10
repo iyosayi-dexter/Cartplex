@@ -9,43 +9,42 @@ import { useTotalCartItems } from '../utils/cart'
 const Header:FC=()=>{
     const totalCartItems = useTotalCartItems()
     return (
-    <header className='header_main'>
-        <div className='header_main_flex'>
-
-            <div className='header_main_logo_wrapper'>
+    <header className='header'>
+        <section className='header__main'>
+            <div className='header__logoWrapper'>
                 <Link href='/'>
-                    <a>
-                        <Image src='/assets/cartplex_base_logo.svg' width={30} height={30} alt='Cartplex Logo'/>
-                        <Image src='/assets/cartplex_name_logo.svg' width={140} height={40} alt='Cartplex Logo'/>
+                    <a className='header__logoLinkWrapper'>
+                        <Image src='/assets/primary_logo.svg' width={30} height={30} alt='Logo'/>
+                        <Image src='/assets/secondary_logo.svg' width={120} height={120} alt='Logo'/>
                     </a>
                 </Link>
             </div>
 
-            <form action='search'>
-                <div className='header_main_form_selection'>
-                    <select name='category'>
-                        <option value='all'>All categories</option>
+            <form className='header__searchForm' action='search'>
+                <div className='header__searchField'>
+                    <select name='category' className='header__select header__select--dark'>
+                        <option value='all'>All</option>
                     </select>
-                    <input type='search' name='q'/>
+                    <input type='search' placeholder='Search for products' className='header__searchInput' name='q'/>
                 </div>
-                <button className='btn_primary'>Search</button>
+                <button className='header_searchBtn'>Search</button>
             </form>
 
-            <div className='header_main_user_section'>
-                <div className='header_main_user_cart'>
-                        <Link href='/my-cart'>
-                            <a>
-                                <p>My cart</p>
-                                <div className='header_main_cart_icon_wrapper'>
-                                    <Image src='/assets/cart.svg' width={25} height={25} alt='cart'/>
-                                    <p className='header_main_cart_items_total'>{totalCartItems()}</p>
-                                </div>
-                            </a>
-                        </Link>
-                </div>
+            <div className='header__accountWrapper'>
+                <p>My account</p>
+                <Image src='/assets/Arrow.svg' width={15} height={15} alt='Arrow'/>
             </div>
 
-        </div>
+            <div className='header__cartWrapper'>
+                <Link href='/my-cart'>
+                    <a>
+                        <Image src='/assets/cart_dark.svg' alt='cart' width={25} height={25}/>
+                        <p className='header__cartValue'>{totalCartItems()}</p>
+                    </a>
+                </Link>
+            </div>
+        </section>
+
     </header>
     )
 }
