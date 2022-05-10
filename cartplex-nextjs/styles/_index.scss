@@ -1,0 +1,30 @@
+.index {
+    @include flexbox(center , flex-start);
+    gap:2rem;
+    padding:1rem;
+}
+.index__aside {
+    flex:.25;
+    // padding:1rem;
+}
+.index_categories {
+    border:1px solid $light;
+    padding:1rem;
+    a{
+        color:black;
+    }
+}
+.index__main{
+    flex:.75;
+}
+.index__tag{
+    background:$primary-color;
+    color:white;
+    padding:.9rem 1rem;
+    border-radius:.2rem;
+    text-transform:uppercase;
+    font-size:.9rem;
+}
+.index__latestItemsWrapper{
+    @include grid(1fr 1fr 1fr);
+}
