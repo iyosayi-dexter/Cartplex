@@ -87,10 +87,10 @@ class Thumbnail(models.Model):
         return self.thumbnail.url
 
 
-# class Banner(models.Model):
-#     cover = models.ImageField(upload_to='bannners/covers')
-#     product = models.ForeignKey(Product , on_delete=models.CASCADE , related_name='banner_product')
-#     date_added = models.DateTimeField(auto_now_add=True)
+class Banner(models.Model):
+    cover = models.ImageField(upload_to='bannners/covers')
+    product_url = models.ForeignKey(Product , on_delete=models.CASCADE , related_name='product_url')
+    date_added = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return self.cover.url
+    def __str__(self):
+        return self.cover.url

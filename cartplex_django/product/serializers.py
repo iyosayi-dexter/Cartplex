@@ -1,5 +1,6 @@
-from .models import Product , Thumbnail
+from .models import Product , Thumbnail , Banner
 from rest_framework import serializers
+
 
 class ProductDetailSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
@@ -18,3 +19,9 @@ class ThumbnailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Thumbnail
         fields = ('id' , 'thumbnail')
+
+
+class BannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Banner
+        fields = ('id' , 'cover' , 'product_url' ,)
