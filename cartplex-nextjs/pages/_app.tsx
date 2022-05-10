@@ -12,12 +12,18 @@ import NavBar from '../components/NavBar'
 import useLoadUser from '../adapters/loadUser'
 import {useRetrieveCartitems} from '../utils/cart'
 
+
 function MyApp({ Component, pageProps }: AppProps) {
 
   const [userData , setUserData] = useState<userInterface>(userInitialState)
   const [cartItems , setCartItems] = useState<cartItemInterface[]>(cartInitialState)
   const loadUser = useLoadUser()
-  const retrieveCartItems = useRetrieveCartitems()
+  const retrieveCartItems =  useRetrieveCartitems()
+
+  useEffect(()=>{
+    retrieveCartItems(setCartItems)
+    // loadUser(setUserData)
+  },[retrieveCartItems])
 
   return (
     <ProfileContext.Provider value={{userData, setUserData}}>
