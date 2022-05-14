@@ -1,8 +1,7 @@
 import {Dispatch ,SetStateAction} from 'react'
-import {productListInterface} from '../utils/interfaces'
+import {bannerInterface, productListInterface} from '../utils/interfaces'
 import REST_API_URL from '../utils/global'
 import {useCallback} from 'react'
-
 
 export const useGetProduct=()=>{
     const getProduct=useCallback(async(url:string , setDataCallback:Dispatch<SetStateAction<productListInterface[]>> , setLoadingCallBack:Dispatch<SetStateAction<boolean>>)=>{
@@ -34,4 +33,20 @@ export const useGetCategories=()=>{
         }
     },[])
     return getCategories
+}
+
+export const useGetBanners=()=>{
+    const getBanners=useCallback(async(url:string , setDataCallback:Dispatch<SetStateAction<bannerInterface[]>> , setLoadingCallBack: Dispatch<SetStateAction<boolean>>)=>{
+        try{
+            setLoadingCallBack(true)
+            const res = await fetch(`${REST_API_URL}/${url}`)
+            const data = await res.json()
+            setDataCallback(data)
+        }catch(err){
+
+        }finally{
+            setLoadingCallBack(false)
+        }
+    },[])
+    return getBanners
 }

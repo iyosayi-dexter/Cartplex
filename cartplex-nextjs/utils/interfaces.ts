@@ -42,3 +42,9 @@ export interface cartItemInterface {
     price:string,
     total:number
 }
+
+export interface bannerInterface{
+    id:number,
+    cover:string,
+    product_url:string
+}

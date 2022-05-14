@@ -49,20 +49,20 @@ const SignUp=()=>{
 
 
     return (
-        <section className='auth_page'>
+        <section className='auth'>
             {
                 signUpInfo &&   <div className={`modal success_${signUpInfo.success}`}>
                                     <p>{signUpInfo.description}</p>
                                     <button onClick={()=>setSignUpInfo(null)}>Close</button>
                                 </div>
             }
-            <main className="auth_card_wrapper">
-                <section className='auth_page_main'>
-                    <h1 className='auth_page_header'>Create an account</h1>
-                    <div className='auth_page_google_auth'>
-                        Sign in with google
+            <main className="auth__cardWrapper">
+                <section className='auth__main'>
+                    <h1 className='auth__header'>Create an account</h1>
+                    <div className='auth__google'>
+                        Sign In With Google
                     </div>
-                    <form action="/" className='auth_form' onSubmit={e=>handleSignUp(e)}>
+                    <form action="/" className='auth__form' onSubmit={e=>handleSignUp(e)}>
                         <div className='form_field'>
                             <label htmlFor='email'>Email</label>
                             <input required={true} type='email' name='email' value={email} onChange={(e)=>setInputValue(e)} className={`auth_field_valid_${formErrors.email?.valid}`}/>
@@ -94,9 +94,9 @@ const SignUp=()=>{
 
                         <button className={`btn_primary btn_loading_${isLoading}`}>{isLoading ? "Loading..." : "Sign Up"}</button>
                     </form>
-                    <p className='auth_form_footer'>Already have an account? <Link href='/login'>Login</Link></p>
+                    <p className='auth__footer'>Already have an account? <Link href='/login'>Login</Link></p>
                 </section>
-                <section className='auth_page_secondary'>
+                <section className='auth_secondary'>
 
                 </section>
             </main>

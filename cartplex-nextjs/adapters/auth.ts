@@ -103,3 +103,59 @@ export const useSignUp=()=>{
 
     return signUp
 }
+
+
+
+export const usePasswordReset=()=>{
+    const requestPasswordReset=async(email:string , setLoadingCallBack:Dispatch<SetStateAction<boolean>> , setDataCallback:Dispatch<SetStateAction<{
+        error: boolean | null;
+        text: string | null;
+    }>>)=>{
+        const config = {
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify(email)
+        }
+
+        try{
+            setLoadingCallBack(true)
+            setDataCallback({error:null , text:null})
+            const res = await fetch(`${REST_API_URL}/auth/password_reset/` , config)
+            const data = await res.json()
+            setDataCallback(data)
+        }catch(err){
+
+        }finally{
+            setLoadingCallBack(false)
+        }
+    }
+    return requestPasswordReset
+}
+
+
+export const usePasswordResetConfirm=()=>{
+    const confirmPasswordReset=async(email:string, uidb4:unknown , token:unknown , setLoadingCallBack:Dispatch<SetStateAction<boolean>> ,
+        setDataCallback:Dispatch<SetStateAction<{error:boolean|null; text:string|null;}>>)=>{
+        const config = {
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(email)
+        }
+        try {
+            setLoadingCallBack(true)
+            setDataCallback({error:null , text:null})
+            const res = await fetch(`${REST_API_URL}/auth/password_reset_confirm/${uidb4}/${token}/` , config)
+            const data = await res.json()
+            setDataCallback(data)
+        }catch(err){
+
+        }finally {
+            setLoadingCallBack(false)
+        }
+    }
+    return confirmPasswordReset
+}
