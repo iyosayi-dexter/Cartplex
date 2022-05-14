@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Thumbnail , Product
+from .models import Banner, Thumbnail , Product
 
 class ThumbnailInline(admin.StackedInline):
     model = Thumbnail
@@ -10,3 +10,8 @@ class ProductAdmin(admin.ModelAdmin):
     exclude = ('slug', 'views' , 'total_rating', 'rating_score', 'rating',)
 
 admin.site.register(Product , ProductAdmin)
+
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ('product_url' , 'cover' , 'date_added' ,)
+
+admin.site.register(Banner , BannerAdmin)

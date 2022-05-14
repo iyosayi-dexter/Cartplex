@@ -1,10 +1,11 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
-from .models import Product , Thumbnail
-from .serializers import ProductDetailSerializer , ProductListSerializer , ThumbnailSerializer
+from .models import Product , Thumbnail , Banner
+from .serializers import ProductDetailSerializer , ProductListSerializer , ThumbnailSerializer , BannerSerializer
 from rest_framework import status , permissions
 from decimal import Decimal
 from rest_framework.response import Response
+
 
 # in ecommerce stores , you don't list out all the products , you categorize them
 # newest producsts -> 10
@@ -36,8 +37,7 @@ class ProducTrendingView(ListAPIView):
 class ProductRatingView(APIView):
     permission_classes = (permissions.AllowAny ,)
     def get(self , request):
-        self.permission_classes = (permissions.AllowAny,)
-        queryset = Product.objects.all().order_by('-rating')[:10]
+        queryset = Product.objects.all().order_by('-rating')[:5]
         serializer = ProductListSerializer(queryset , many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -92,3 +92,10 @@ class ProductDetailView(APIView):
 
         except Product.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+
+class BannerListView(ListAPIView):
+    permission_classes = (permissions.AllowAny,)
+    queryset = Banner.objects.all()
+    serializer_class = BannerSerializer

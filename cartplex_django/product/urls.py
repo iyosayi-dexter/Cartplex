@@ -6,7 +6,7 @@ from .views import (
     ProductRatingView
 )
 from django.urls import path
-
+from .views import BannerListView
 
 urlpatterns = [
     path('latest/' , ProductLatestView.as_view(), name='product_latest'),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('trending/' , ProducTrendingView.as_view() , name='product_trending'),
     path('detail/<str:slug>/' , ProductDetailView.as_view() , name='product_detail'),
     path('rating/' , ProductRatingView.as_view() , name='product_rating'),
+    path('banner/' , BannerListView.as_view() , name='product_banner')
 ]

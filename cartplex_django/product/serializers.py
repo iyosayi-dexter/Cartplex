@@ -22,6 +22,10 @@ class ThumbnailSerializer(serializers.ModelSerializer):
 
 
 class BannerSerializer(serializers.ModelSerializer):
+    product_url = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='slug'
+    )
     class Meta:
         model = Banner
         fields = ('id' , 'cover' , 'product_url' ,)
