@@ -1,12 +1,15 @@
 from operator import is_
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser , PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import AccountManager
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .utils import send_activation_mail
 
-# Create your models here.
-class Account(AbstractBaseUser , PermissionsMixin):
+
+class Account(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=200)
-    email = models.EmailField(max_length=255 , unique=True)
+    email = models.EmailField(max_length=255, unique=True)
     email_verified = models.BooleanField(default=False)
     superuser = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
@@ -25,6 +28,7 @@ class Account(AbstractBaseUser , PermissionsMixin):
 
     def __str__(self):
         return self.email
+
     @property
     def is_superuser(self):
         return self.superuser
@@ -40,3 +44,9 @@ class Account(AbstractBaseUser , PermissionsMixin):
     @property
     def is_email_verified(self):
         return self.email_verified
+
+
+@receiver(post_save, sender=Account)
+def user_created_handler(sender, instance, created, *args, **kwargs):
+    if created:
+        send_activation_mail(instance)
