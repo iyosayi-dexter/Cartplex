@@ -2,6 +2,9 @@ $primary-color:#00000e;
 $secondary-color:#FFB70C;
 $light:#f9f9f9;
 
+$skel_base_color:#f9f9f9;
+$skel_item_color:#e3e1e1;
+
 * , *::before , *::after {
     box-sizing: border-box;
     margin:0;
@@ -98,3 +101,4 @@ input {
 @import 'auth';
 @import 'nav';
 @import 'cart';
+@import 'banner';

@@ -4,7 +4,8 @@
     padding:1rem;
 }
 .index__aside {
-    flex:.25;
+    flex:.20;
+    font-size:.9rem;
     // padding:1rem;
 }
 .index_categories {
@@ -15,7 +16,10 @@
     }
 }
 .index__main{
-    flex:.75;
+    flex:.8;
+    .productDisplay__imgWrapper{
+        height:10rem;
+    }
 }
 .index__tag{
     background:$primary-color;
@@ -25,6 +29,13 @@
     text-transform:uppercase;
     font-size:.9rem;
 }
+.index__bannerGrid{
+    @include grid(1fr 1fr);
+    grid-template-rows: 14rem 14rem;
+    gap:.5rem;
+    margin-bottom:1rem;
+}
 .index__latestItemsWrapper{
     @include grid(1fr 1fr 1fr);
+    gap:.5rem;
 }

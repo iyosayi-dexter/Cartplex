@@ -1,0 +1,10 @@
+.banner{
+    position: relative;
+    width:100%;
+    &:first-child {
+        grid-row:span 2;
+    }
+    img {
+        object-fit:cover;
+    }
+}

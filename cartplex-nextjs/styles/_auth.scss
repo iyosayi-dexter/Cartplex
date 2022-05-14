@@ -1,4 +1,4 @@
-.auth_card_wrapper {
+.auth__cardWrapper {
     width:80%;
     padding:1rem;
     border-radius:.2rem;
@@ -6,7 +6,7 @@
     @include flexbox(space-between , center);
     background:$light;
 }
-.auth_page_google_auth {
+.auth__google {
     margin:1rem 0;
     background:white;
     width:85%;
@@ -14,14 +14,14 @@
     padding:.7rem;
     border-radius:.1rem;
 }
-.auth_page_main {
+.auth__main {
     flex:.45;
     padding:1rem;
 }
 .auth_form {
     margin:1rem 0;
 }
-.auth_page_main .form_field {
+.auth__main .form_field {
     margin:1rem 0;
     @include flexbox(center , flex-start);
     flex-direction: column;
@@ -36,7 +36,7 @@
         font-size:.95rem;
     }
 }
-.auth_form {
+.auth__form {
     button {
         width:85%;
         color:white;
@@ -45,16 +45,16 @@
     }
 }
 
-.auth_page_header{
+.auth__header{
     font-size:2.5rem;
 }
-.auth_page_secondary{
+.auth__secondary{
     flex:.65;
 }
-.auth_form_footer{
+.auth__footer{
     margin:1rem auto;
 }
-.auth_page .btn_loading_true {
+.auth .btn_loading_true {
     background:rgba($primary-color,.9);
 }
 .auth_field_valid_false {
@@ -65,21 +65,49 @@
     margin:.2rem 0;
     color:red;
 }
-.auth_password_reset_link_wrapper{
+.auth__resLinkWrapper{
     text-align:right;
     width:85%;
 }
+.auth_presText{
+    font-size:.9rem;
+    margin:1rem 0;
+    width:85%;
+}
+
+.auth__optionsWrapper {
+    @include flexbox(flex-start , center);
+    width:85%;
+    button {
+        flex:.4;
+    }
+    a{
+        flex:.6;
+        text-align:right;
+        text-decoration: none;
+        color:black;
+        &:hover {
+            color:$secondary-color;
+        }
+    }
+    gap:1rem;
+}
+
+
+
+
 @media screen and (max-width:1000px) {
-    .auth_page_secondary{
+    .auth__secondary{
+        flex:0;
         display:none;
     }
-    .auth_page_main{
+    .auth__main{
         flex:1;
         input[type=text] , input[type=email] , input[type=password] , button {
             width:100%;
         }
     }
-    .wrapper_flex , .auth_page_google_auth {
+    .wrapper_flex , .auth__google {
         width: 100%;
     }
 }
